@@ -1,0 +1,12 @@
+.venv/
+.env
+__pycache__/
+*.py[cod]
+.DS_Store
+
+data/*
+!data/sample/
+!data/sample/.gitkeep
+*.pdf
+
+vector_store/
