@@ -31,21 +31,4 @@ def load_pdf_pages(pdf_directory,process_id,) -> list[dict]:
     return page_records
 
 
-if __name__ == "__main__":
-    documents_directory = Path("data/raw")
-
-    pages = load_pdf_pages(
-        pdf_directory=documents_directory,
-        process_id="ORION-ONB-01",
-    )
-
-    print(f"Extracted {len(pages)} pages")
-    print("Python started from:", Path.cwd())
-    print("PDF directory:", documents_directory.resolve())
-
-    for page in pages:
-        print(
-            page["document_name"],
-            page["page_number"],
-            repr(page["text"][:100]),
-        )
+    

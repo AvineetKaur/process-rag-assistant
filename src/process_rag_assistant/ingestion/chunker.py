@@ -9,6 +9,12 @@ def chunk_pages(pages, chunk_size=200, overlap=20):
         chunk_id=0
         while start<len(words):
             chunk_id+=1
+            unique_chunk_id = (
+                f"{page['process_id']}_"
+                f"{page['document_name']}_"
+                f"page_{page['page_number']}_"
+                f"chunk_{chunk_id}"
+            )
             end=start+chunk_size
             chunk_words=words[start:end]
             chunk_words=" ".join(chunk_words)
@@ -17,8 +23,10 @@ def chunk_pages(pages, chunk_size=200, overlap=20):
                 "process_id": page["process_id"],
                 "document_name":page["document_name"],
                 "page_number":page["page_number"],
-                "chunk_id":chunk_id
+                "chunk_id":unique_chunk_id
             })
+            if end >= len(words):
+                break
             start=end-overlap
     return chunks
 
